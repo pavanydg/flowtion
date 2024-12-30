@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
 
 import Logo from "./Logo";
+import { Themeswitch } from "@/components/theme-switch";
 
 const NavBar = () => {
     const { isAuthenticated, isLoading} = useConvexAuth();
@@ -51,7 +52,8 @@ const NavBar = () => {
                         />
                     </>
                 )}
-                <ModeToggle/>
+                {/* <ModeToggle/> */}
+                <Themeswitch/>
             </div>
         </div>
     )
