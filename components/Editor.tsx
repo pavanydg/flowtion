@@ -4,14 +4,12 @@ import "@blocknote/core/fonts/inter.css";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
 import { useCreateBlockNote } from "@blocknote/react";
-
 import { useEdgeStore } from "@/lib/edgestore";
 import { useTheme } from "next-themes";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
-import { useEffect } from "react";
+import { PartialBlock } from "@blocknote/core";
 
 interface EditorProps {
     onChange: (value: string) => void;
@@ -20,7 +18,7 @@ interface EditorProps {
     documentId: Id<"documents">
 }
 
-export const Editor = ({ onChange, editable, documentId }: EditorProps) => {
+export const Editor = ({ editable, documentId }: EditorProps) => {
     const { resolvedTheme } = useTheme();
     const { edgestore } = useEdgeStore();
 
@@ -38,8 +36,16 @@ export const Editor = ({ onChange, editable, documentId }: EditorProps) => {
         }
     }
 
+    const handleUpload = async (file: File) => {
+        const response = await edgestore.publicFiles.upload({
+            file,
+        });
+        return response.url;
+    };
+
     const editor = useCreateBlockNote({
         initialContent: initialContent,
+        uploadFile : handleUpload
     });
 
     const update = useMutation(api.documents.update);
@@ -49,13 +55,6 @@ export const Editor = ({ onChange, editable, documentId }: EditorProps) => {
             id: documentId,
             content
         });
-    };
-
-    const handleUpload = async (file: File) => {
-        const response = await edgestore.publicFiles.upload({
-            file,
-        });
-        return response.url;
     };
 
     if (!editor) {

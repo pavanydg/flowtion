@@ -5,8 +5,7 @@ import { useScrollTop } from "@/hooks/use-scroll-top";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/mode-toggle";
-import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
+import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
 

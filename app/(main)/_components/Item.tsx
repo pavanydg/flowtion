@@ -79,7 +79,7 @@ export const Item = ({
                 if (!expanded) {
                     onExpand?.()
                 }
-                // router.push(`/documents/${documentId}`)
+                router.push(`/documents/${documentId}`)
             });
 
         toast.promise(promise, {

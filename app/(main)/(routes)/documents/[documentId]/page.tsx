@@ -9,12 +9,6 @@ import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import { useParams } from "next/navigation";
 
-interface DocumentIdPageProps {
-    params: {
-        documentId: Id<"documents">;
-    };
-};
-
 
 const DocumentIdPage = () => {
     const params = useParams();

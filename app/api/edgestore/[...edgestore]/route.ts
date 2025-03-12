@@ -17,7 +17,7 @@ const edgeStoreRouter = es.router({
        * return `true` to allow delete
        * This function must be defined if you want to delete files directly from the client.
        */
-      .beforeDelete(({ ctx, fileInfo }) => {
+      .beforeDelete(({}) => {
         return true; // allow delete
       }),
   });

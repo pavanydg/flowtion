@@ -13,8 +13,8 @@ const DocumentsPage = () => {
     const create = useMutation(api.documents.create);
 
     const onCreate = () => {
-        const promise = create({title: "Untitled"})
-        toast.promise(promise,{
+        const promise = create({ title: "Untitled" })
+        toast.promise(promise, {
             loading: "Creating a new note...",
             success: "New note created!",
             error: "Failed to create a new note."
@@ -38,7 +38,7 @@ const DocumentsPage = () => {
                 className="hidden dark:block"
             />
             <h2 className="text-lg font-medium">
-                Welcome to {user?.firstName}'s Flowtion
+                Welcome to {user?.firstName}&apos;s Flowtion
             </h2>
             <Button onClick={onCreate}>
                 <PlusCircle className="h-4 w-4 mr-2" />
